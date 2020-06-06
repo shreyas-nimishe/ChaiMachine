@@ -19,6 +19,8 @@ class ChaiMachine:
         self.materials["coffee"] += coffee/10
         self.materials["elaichi"] += elaichi/5
 
+        self.warnings = []
+
 
     def fill(self, material, quantity):
 
@@ -33,7 +35,7 @@ class ChaiMachine:
 
 
     def isAvailaible(self, drink):
-        warnings = []
+        self.warnings = []
         status = True;
 
         print(self.materials )
@@ -43,14 +45,17 @@ class ChaiMachine:
                 status = False
             
             if(self.materials[key] < 5 ):
-                warnings.append(key);
+                self.warnings.append(key);
 
+        self.displayWarnings()
 
+        return status
+
+    def displayWarnings(self):
         #print(warnings)
-        for warn in warnings:
+        for warn in self.warnings:
             print("Warning: Low " + warn + " ,less than 5 units left")
         
-        return status
 
 
     def makeDrink(self, drink):
@@ -60,8 +65,8 @@ class ChaiMachine:
             for material in self.materials:
                 self.materials[material] -= drink[material]
 
-            print("\nHello!, Your " + drink["name"] + " is ready!\n\n\n")
+            print("\nHello!, Your " + drink["name"] + " is ready!\n\t\t--------------------------------------------------------\t")
         else:
             
-            print("\nSorry!, Your " + drink["name"] + " is currently unavailaible!\n\n\n")
+            print("\nSorry!, Your " + drink["name"] + " is currently unavailaible!\n \t\t---------------------------------------------------\t")
         
