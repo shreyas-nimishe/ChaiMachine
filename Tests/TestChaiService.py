@@ -1,12 +1,8 @@
 
-import os
-
-os.chdir("..")
-import ChaiMachine 
-import Beverages
+from ... import ChaiMachine, Beverages
 
 def initializeTests():
-    chaiMachine = chai.ChaiMachine(water=cur_water, 
+    chaiMachine = ChaiMachine(water=cur_water, 
         milk = 300, 
         tea = 60,
         ginger = 30,
